@@ -1,0 +1,63 @@
+{
+  "name": "Auto Booker",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [ "sound.mp3" ],
+      "matches": [ "*://*/*" ]
+    }
+   ],
+  "permissions": [
+    "windows",
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "scripting",
+    "http://*/",
+    "https://*/",
+    "chrome-extension://*",
+    "*"
+  ],
+  "host_permissions": [
+    "windows",
+    "tabs",
+    "scripting",
+    "activeTab",
+    "https://prenotami.esteri.it/*",
+    "https://getnada.com/*",
+    "chrome-extension://*",
+    "*"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Auto Login"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://prenotami.esteri.it/*"
+      ],
+      "js": [
+        "jquery.min.js",
+        "content-script.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "js": [
+        "jquery.min.js",
+        "otp-script.js"
+      ]
+    }
+  ],
+  "externally_connectable": {
+    "matches": ["*://*.google.com/*"]
+}
+}

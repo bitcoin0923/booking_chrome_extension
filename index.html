@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script defer src="jquery.min.js"></script>
+  <script defer src="index.js"></script>
+</head>
+
+<body>
+  <section class="login-form">
+    <h3 class="text-center text-danger">Login to website!</h3>
+    <form>
+      <div class="form-group">
+        <label for="InputEmail">Email address</label>
+        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email"
+          >
+      </div>
+      <div class="form-group">
+        <label for="InputPassword">Password</label>
+        <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="InputPassport">Passport Number</label>
+        <input type="text" class="form-control" id="InputPassport" placeholder="Passport">
+      </div>
+      <div class="form-group">
+        <label for="SelectMinorChildren">Minor Children</label>
+        <select class="form-control" id="SelectMinorChildren">
+          <option value="11" selected>Yes</option>
+          <option value="12">No</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="SelectPower">Power of attorney</label>
+        <select class="form-control" id="SelectPower">
+          <option value="52" selected>General</option>
+          <option value="53">Special</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="InputSurname">Name and Surname of other parents</label>
+        <input type="text" class="form-control" id="InputSurname" placeholder="Name and Surname of other parents">
+      </div>
+      <div class="form-group">
+        <label for="InputFile">Identify/Travel document</label>
+        <input type="file" id="InputFile" placeholder="Passport">
+      </div>
+      <label>Book Type</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio1" value="1" checked>
+        <label class="form-check-label" for="flexRadio1">
+           1
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio2" value="2" >
+        <label class="form-check-label" for="flexRadio2">
+          2
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio3" value="3" >
+        <label class="form-check-label" for="flexRadio3">
+          3
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio4" value="4" >
+        <label class="form-check-label" for="flexRadio4">
+          4
+        </label>
+      </div>      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadio" id="flexRadio5" value="5" >
+        <label class="form-check-label" for="flexRadio5">
+          5
+        </label>
+      </div>
+      <button type="button" class="btn btn-primary float-right" id="submit_btn">Submit</button>
+    </form>
+  </section>
+  <!-- <section>
+    <h4 class="text-center text-info">Booking Type</h4>
+
+  </section> -->
+</body>
+
+</html>

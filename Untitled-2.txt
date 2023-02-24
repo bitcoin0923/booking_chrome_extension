@@ -1,0 +1,84 @@
+// var disablerFunction = function () {
+
+//     window.alert = function alert(msg) { console.log('Hidden Alert ' + msg); };
+//     window.confirm = function confirm(msg) {
+//         console.log("Hidden Confirm " + msg);
+//         return true; /*simulates user clicking yes*/
+//     };
+
+// };
+// var disablerCode = "(" + disablerFunction.toString() + ")();";
+// var disablerScriptElement = document.createElement('script');
+// disablerScriptElement.textContent = disablerCode;
+
+// window.confirm = () => true;
+
+// if (confirm('OK?')) {
+//   console.log('Going...');
+// }
+
+
+$(document).ready(async function () {
+    var url = new URL(window.location.href)
+    var links = []
+    console.log(url.pathname)
+    if (url.pathname.includes('Services/Booking')) {
+        // document.documentElement.appendChild(disablerScriptElement);
+        // disablerScriptElement.parentNode.removeChild(disablerScriptElement);
+        // var scripts = $(document).find('script')
+        // $(scripts[12]).attr('src', "")
+        
+        
+            chrome.storage.local.get(["passport", "minor", "surname", "filename", "filetype", "filecontent"], (result) => {
+                
+                $('#DatiAddizionaliPrenotante_0___testo').val(result.passport);
+                $('#ddls_1').val(result.minor);
+                $('#DatiAddizionaliPrenotante_2___testo').val(result.surname);
+                const fileInput0 = document.getElementById('File_0');
+                const fileInput1 = document.getElementById('File_1');
+                const myFile = new File([result.filecontent], result.filename, {
+                  type: result.filetype,
+                  lastModified: new Date(),
+                });
+            
+                // Now let's create a DataTransfer to get a FileList
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(myFile);
+                fileInput0.files = dataTransfer.files;
+                fileInput1.files = dataTransfer.files;
+                // setTimeout(() => {
+                //     if ($('#PrivacyCheck')) {
+                //         $('#PrivacyCheck').trigger('click')
+                //         $('button[type=submit]').trigger('click')
+                //     }
+                // }, 5000)
+                
+              });
+
+    }
+    else if (url.pathname.includes('Services')) {
+        await setTimeout(async () => {
+            if ($('#dataTableServices')) {
+                links = $('#dataTableServices > tbody > tr > td > a')
+            }
+            var bookType = window.localStorage.getItem('bookType')
+            $(links[+bookType - 1]).find('button').trigger('click')
+            // window.location.href = "https://prenotami.esteri.it" + link
+            // console.log(window.location.href)
+        }, 1000)
+    } else if(url.pathname.includes('BookingCalendar')) {
+        await setTimeout(async () => {
+            if ($('.datepicker-days > .table-condensed')) {
+                days = $('.datepicker-days > table.table-condensed > tbody > tr > td.availableDay')
+                if(days.length) {
+                    $(days[0]).trigger('click')
+                } else {
+                    setTimeout("location.reload(true);", 5000);
+                }                    
+            }
+            console.log(days.length)
+        }, 2000)
+    } else if(url.pathname.includes('UserArea')) {
+        window.location.href = "https://prenotami.esteri.it/Services"
+    }
+})
